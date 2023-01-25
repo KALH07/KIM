@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,18 +42,24 @@ Route::prefix('/v1')->group(Function() {
             'hasError' => false,
             'message' => "Plat du jour",
             'data' => [
-                 [
-                     'id' => 1,
-                      'libelle' => 'Foutou'
-                     ],
-                     [
-                         'id' => 2,
-                          'libelle' => 'Placali'
-                          ]
-                          ]
-                        ]);
-                    });
+                [
+                    'id' => 1,
+                    'libelle' => 'Foutou'
+                ],
+                [
+                    'id' => 2,
+                    'libelle' => 'Placali'
+                ]
+            ]
+        ]);
+    });
     Route::get('/class',[TestController::class, 'index']);
+
+    Route::get('/class/fruits',[TestController::class, 'index1']);
+
+    Route::get('/class/plats',[TestController::class, 'index2']);
+
+
 
 });
 
