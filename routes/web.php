@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/me', function () {
-    return "KALH est BG, ID: ".$id";
+    return "KALH est BG";
 });

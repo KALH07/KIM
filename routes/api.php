@@ -25,3 +25,26 @@ Route::get('/personnes/{id}',function ($id) {
 Route::get('/peoples/{name?}',function ($name = "KALH") {
     return "Nom :".$name;
 });
+
+Route::prefix('/v1')->group(Function() {
+    return response()->json([
+        'mangues','kiwi','citron'
+    ]);
+});
+
+Route::get('/plats', function () {
+    return response()->json([
+        'hasError' => false,
+        'message' => "Plat du jour",
+        'data' => [
+             [
+                 'id' => 1,
+                  'libelle' => 'Foutou'
+                 ],
+                 [
+                     'id' => 2,
+                      'libelle' => 'Placali'
+                      ]
+                      ]
+                    ]);
+                });
