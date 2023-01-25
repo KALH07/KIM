@@ -27,24 +27,30 @@ Route::get('/peoples/{name?}',function ($name = "KALH") {
 });
 
 Route::prefix('/v1')->group(Function() {
-    return response()->json([
-        'mangues','kiwi','citron'
-    ]);
+
+    Route::get("/fruits", function(){
+        return response()->json([
+            'mangues','kiwi','citron'
+
+        ]);
+
+    });
+    Route::get('/plats', function () {
+        return response()->json([
+            'hasError' => false,
+            'message' => "Plat du jour",
+            'data' => [
+                 [
+                     'id' => 1,
+                      'libelle' => 'Foutou'
+                     ],
+                     [
+                         'id' => 2,
+                          'libelle' => 'Placali'
+                          ]
+                          ]
+                        ]);
+                    });
+
 });
 
-Route::get('/plats', function () {
-    return response()->json([
-        'hasError' => false,
-        'message' => "Plat du jour",
-        'data' => [
-             [
-                 'id' => 1,
-                  'libelle' => 'Foutou'
-                 ],
-                 [
-                     'id' => 2,
-                      'libelle' => 'Placali'
-                      ]
-                      ]
-                    ]);
-                });
