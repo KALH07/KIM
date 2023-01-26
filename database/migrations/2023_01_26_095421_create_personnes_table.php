@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('personnes', function (Blueprint $table) {
             $table->id();
+
+            $table->string('nom')->nullable();
+            $table->string('prenom')->nullable();
+            $table->string('email')->unique();
+            $table->boolean('active');
+
             $table->timestamps();
         });
     }
