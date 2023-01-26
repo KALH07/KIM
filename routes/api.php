@@ -3,6 +3,7 @@
 use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PersonneController;
 
 
 /*
@@ -55,9 +56,12 @@ Route::prefix('/v1')->group(Function() {
     });
     Route::get('/class',[TestController::class, 'index']);
 
-    Route::get('/class/fruits',[TestController::class, 'index1']);
+    Route::get('/fruits',[TestController::class, 'index1']);
 
-    Route::get('/class/plats',[TestController::class, 'index2']);
+    Route::get('/plats',[TestController::class, 'index2']);
+
+    Route::get('/gou',[PersonneController::class, 'index']);
+
 
 
 
