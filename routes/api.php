@@ -60,7 +60,7 @@ Route::prefix('/v1')->group(Function() {
 
     Route::get('/plats',[TestController::class, 'index2']);
 
-    Route::get('/gou',[PersonneController::class, 'index']);
+    Route::get('/grou',[PersonneController::class, 'index']);
 
 
 

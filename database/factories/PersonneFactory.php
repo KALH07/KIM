@@ -17,6 +17,12 @@ class PersonneFactory extends Factory
     public function definition()
     {
         return [
+            'nom' => fake()->firstName(),
+            'prenom' => fake()->lastName(),
+            'email' => fake()->unique()->safeEmail(),
+            'active' => fake()->boolean()
+
+
             //
         ];
     }
