@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Personne extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+    //filable = ["nom"......] fait la meme chose que proctected mais permet les insertions
 }

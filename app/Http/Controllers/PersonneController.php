@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Personne;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class PersonneController extends Controller
 {
@@ -30,6 +31,26 @@ class PersonneController extends Controller
      */
     public function store(Request $request)
     {
+        $request-> validate([//validation
+            'nom' => "required",
+            'prenom' => "required",
+            'email' => "required | unique:personnes",
+            'active' => "required"
+        ]);
+
+        $personne = Personne::create([//Enregistrement
+            'nom' => $request->get('nom'),
+            'prenom' => $request->get('prenom'),
+            'email' => $request->get('email'),
+            'active' => $request->get('active')
+
+
+        ]);
+        return response()->json([//reponse
+            'hasError' => false,
+            'message' => "Personne ajouter avec succes",
+            'data' => $personne
+        ]);
         //
     }
 
