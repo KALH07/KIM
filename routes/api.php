@@ -64,5 +64,13 @@ Route::prefix('/v1')->group(Function() {
 
     Route::post('/personnes',[PersonneController::class, 'store']);
 
+    Route::get('/test', function(){
+        return response()->json([
+            'hasError' => true,
+            'message' => "Liste des personnes",
+            //'data' => Personne::all()
+        ]);
+    });
+
 });
 

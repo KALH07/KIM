@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Personne;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class PersonneController extends Controller
@@ -31,12 +32,24 @@ class PersonneController extends Controller
      */
     public function store(Request $request)
     {
-        $request-> validate([//validation
+//Autre methode de validation avec une variable
+        $validator = Validator::make($request->all(), [
             'nom' => "required",
             'prenom' => "required",
             'email' => "required | unique:personnes",
             'active' => "required"
+
         ]);
+//Verification de la validation
+        if ($validator->fails()){
+            return response()->json([
+                'hasError' => true,
+                'message' => "Une erreur est survenue lors du traitement",
+                'data' => $validator->errors()->all()
+
+            ]);
+
+        }
 
         $personne = Personne::create([//Enregistrement
             'nom' => $request->get('nom'),
